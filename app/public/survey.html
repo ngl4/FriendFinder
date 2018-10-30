@@ -9,6 +9,10 @@
     <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <!-- JQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -40,9 +44,9 @@
         <div class="form-group">
             <h3>Question 1</h3>
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">Your mind is always buzzing with unexplored ideas
+                <label class="mr-sm-2" for="selectedNumber1">Your mind is always buzzing with unexplored ideas
                     and plans.</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="selectedNumber1">
                     <option selected>Choose...</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
@@ -56,9 +60,9 @@
         <div class="form-group">
             <h3>Question 2</h3>
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">Generally speaking, you rely more on your
+                <label class="mr-sm-2" for="selectedNumber2">Generally speaking, you rely more on your
                     experience than your imagination.</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="selectedNumber2">
                     <option selected>Choose...</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
@@ -72,9 +76,9 @@
         <div class="form-group">
             <h3>Question 3</h3>
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">You find it easy to stay relaxed and focused even
+                <label class="mr-sm-2" for="selectedNumber3">You find it easy to stay relaxed and focused even
                     when there is some pressure.</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select class="custom-select mr-sm-2" id="selectedNumber3">
                     <option selected>Choose...</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
@@ -89,8 +93,8 @@
         <div class="form-group">
             <h3>Question 4</h3>
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">You rarely do something just out of sheer curiosity.</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <label class="mr-sm-2" for="selectedNumber4">You rarely do something just out of sheer curiosity.</label>
+                <select class="custom-select mr-sm-2" id="selectedNumber4">
                     <option selected>Choose...</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
@@ -106,8 +110,8 @@
         <div class="form-group">
             <h3>Question 5</h3>
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">People can rarely upset you.</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <label class="mr-sm-2" for="selectedNumber5">People can rarely upset you.</label>
+                <select class="custom-select mr-sm-2" id="selectedNumber5">
                     <option selected>Choose...</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
@@ -122,8 +126,9 @@
         <div class="form-group">
             <h3>Question 6</h3>
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">It is often difficult for you to relate to other people’s feelings.</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <label class="mr-sm-2" for="selectedNumber6">It is often difficult for you to relate to other people’s
+                    feelings.</label>
+                <select class="custom-select mr-sm-2" id="selectedNumber6">
                     <option selected>Choose...</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
@@ -139,8 +144,9 @@
         <div class="form-group">
             <h3>Question 7</h3>
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">In a discussion, truth should be more important than people’s sensitivities.</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <label class="mr-sm-2" for="selectedNumber7">In a discussion, truth should be more important than
+                    people’s sensitivities.</label>
+                <select class="custom-select mr-sm-2" id="selectedNumber7">
                     <option selected>Choose...</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
@@ -155,8 +161,8 @@
         <div class="form-group">
             <h3>Question 8</h3>
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">You rarely get carried away by fantasies and ideas.</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <label class="mr-sm-2" for="selectedNumber8">You rarely get carried away by fantasies and ideas.</label>
+                <select class="custom-select mr-sm-2" id="selectedNumber8">
                     <option selected>Choose...</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
@@ -171,8 +177,9 @@
         <div class="form-group">
             <h3>Question 9</h3>
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <label class="mr-sm-2" for="selectedNumber9">You think that everyone’s views should be respected
+                    regardless of whether they are supported by facts or not.</label>
+                <select class="custom-select mr-sm-2" id="selectedNumber9">
                     <option selected>Choose...</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
@@ -187,8 +194,9 @@
         <div class="form-group">
             <h3>Question 10</h3>
             <div class="col-auto my-1">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">You feel more energetic after spending time with a group of people.</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <label class="mr-sm-2" for="selectedNumber10">You feel more energetic after spending time with a group
+                    of people.</label>
+                <select class="custom-select mr-sm-2" id="selectedNumber10">
                     <option selected>Choose...</option>
                     <option value="1">1 (Strongly Disagree)</option>
                     <option value="2">2</option>
@@ -200,7 +208,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-info w-100"  data-toggle="modal" data-target="#exampleModal">Submit</button>
+            <button id="submit" type="submit" class="btn btn-info w-100" data-toggle="modal" data-target="#exampleModal">Submit</button>
         </div>
     </div>
 
@@ -210,14 +218,15 @@
     <footer class="footer mb-5 mt-3">
         <div class="container">
             <p class="d-flex justify-content-end text-secondary">
-                <a href="/api/friends" class="text-secondary pr-3">API Friends List </a> | <a href="https://github.com/ngl4/FriendFinder" class="text-secondary pl-3">GitHub Repo</a>
+                <a href="/api/friends" class="text-secondary pr-3">API Friends List </a> | <a href="https://github.com/ngl4/FriendFinder"
+                    class="text-secondary pl-3">GitHub Repo</a>
             </p>
         </div>
 
     </footer>
 
     <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -235,10 +244,86 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
 
-      <!-- JavaScript -->
+    <!-- JavaScript: Sending Data to Server -->
+
+    <script type="text/javascript">
+        $("#submit").on("click", function (event) {
+            event.preventDefault();
+
+            var num1 = $("#selectedNumber1").val().trim();
+            var num2 = $("#selectedNumber2").val().trim();
+            var num3 = $("#selectedNumber3").val().trim();
+            var num4 = $("#selectedNumber4").val().trim();
+            var num5 = $("#selectedNumber5").val().trim();
+            var num6 = $("#selectedNumber6").val().trim();
+            var num7 = $("#selectedNumber7").val().trim();
+            var num8 = $("#selectedNumber8").val().trim();
+            var num9 = $("#selectedNumber9").val().trim();
+            var num10 = $("#selectedNumber10").val().trim();
+
+            var numArray = [parseInt(num1), parseInt(num2), parseInt(num3), parseInt(num4), parseInt(num5),
+                parseInt(num6), parseInt(num7), parseInt(num8), parseInt(num9), parseInt(num10)];
+
+            //Possible shorter way to code for selectedNumber
+            //use "class/ attr/ loop" through all the answers
+
+            var newFriend = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                score: numArray
+            }
+
+            //console.log(newFriend);
+
+            //Adding new Friend to FriendsData 
+            $.post("/api/friends", newFriend, function (data) {
+
+                console.log(data);
+
+                if (data.ok) {
+                    //TODO: create a modal for this added instead of an alert
+                    alert("You are added!");
+                } else {
+                    alert("Sorry! There is something wrong...");
+                }
+
+                console.log(data.friends);
+                
+                $("#name").val("");
+                $("#photo").val("");
+                $("#selectedNumber1").val("");
+                $("#selectedNumber2").val("");
+                $("#selectedNumber3").val("");
+                $("#selectedNumber4").val("");
+                $("#selectedNumber5").val("");
+                $("#selectedNumber6").val("");
+                $("#selectedNumber7").val("");
+                $("#selectedNumber8").val("");
+                $("#selectedNumber9").val("");
+                $("#selectedNumber10").val("");
+            });
+
+            // function runFriendsQuery() {
+
+            //     $.ajax({
+            //             url: "/api/friends",
+            //             method: "GET"
+            //         })
+            //         .then(function (friendsData) {
+            //             console.log(friendsData + "\n--------------\n");
+
+            //         });
+
+            // }
+
+            // runFriendsQuery();
+
+        });
+    </script>
+
 
 </body>
 
