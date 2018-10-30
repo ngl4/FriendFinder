@@ -11,45 +11,73 @@ app.use(express.json());
 
 // ------------------apiRoutes------------------
 
-    //Load Data (require Data) from friends.js file
-    var friendsData = require("../data/friends");
+//Load Data (require Data) from friends.js file
+var friendsData = require("../data/friends");
 
-    //API GET request to parse those Data into JSON
-    //Getting information
-    app.get("/api/friends", function(req,res){
-        res.json(friendsData);
-    });
+//API GET request to parse those Data into JSON
+//Getting information
+app.get("/api/friends", function (req, res) {
+    res.json(friendsData);
+});
 
 
-    //API Post request to submit into Data 
-    app.post("/api/friends", function(req,res) {
-        //making more user-friendly function by adding if-else statement
-        //if (){ 
-        friendsData.push(req.body);
-        //figure out which friend or what is the best match??? 
-        //store in a variable of best_match object
-        //best_match: best_friend 
-        //doing the whole comparison logic in here 
-        res.json({ok: true, friends: friendsData});
-        //using if-else statement (res.json({ok: false}))
-        //}else {
-        //req.body.name="";
-        //res.json({ok:false});
+//API Post request to submit into Data 
+app.post("/api/friends", function (req, res) {
+    //making more user-friendly function by adding if-else statement
+    //if (){ 
+    //figure out which friend or what is the best match??? 
+    //store in a variable of best_match object
+    //best_match: best_friend 
+    //doing the whole comparison logic in here 
+    //using if-else statement (res.json({ok: false}))
+    //}else {
+    //req.body.name="";
+    //res.json({ok:false});
     //}
-    });
 
-    //API Data Clear out!
-    app.post("/api/clear", function(req, res) {
-        // Empty out the arrays of data
-        friendsData.length = [];
+    //function to compare two arrays
+    function compareScores(array1, array2) {
+
+        console.log(array1);
+        console.log(array2);
+        console.log("\n-------------\n");
+
+
+
+    };
+
+    var newFriend = req.body;
+    friendsData.push(newFriend);
+
+    var startingIndex = friendsData.length - 2;
+    while(startingIndex>=0) {
+        //console.log(friendsData[startingIndex].scores);
+        compareScores(newFriend.scores,friendsData[startingIndex].scores);
+        startingIndex--;
+    }
     
-        res.json({ ok: true });
-      });
+    
+    res.json({
+        ok: true,
+        new_friend: newFriend,
+        friends: friendsData
+    });
+});
+
+//API Data Clear out!
+app.post("/api/clear", function (req, res) {
+    // Empty out the arrays of data
+    friendsData.length = [];
+
+    res.json({
+        ok: true
+    });
+});
 
 
 // ------------------apiRoutes------------------
 
-// ---------------- htmlRoutes-------------
+// ---------------- htmlRoutes------------------
 
 //Linking external css to HTML
 app.use(express.static(path.join(__dirname, '../public')));
@@ -62,12 +90,12 @@ app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
 });
 
-//------------------- htmlRoutes---------------
+//------------------- htmlRoutes-------------------
 
 //any routes
-app.get("*", function(req, res) {
+app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
-  });
+});
 
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
