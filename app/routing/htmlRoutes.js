@@ -41,34 +41,67 @@ app.post("/api/friends", function (req, res) {
         //Total difference variable
         var totalDiff = 0; 
 
-        console.log(array1);
-        console.log(array2);
-        console.log("\n-------------\n");
+        
+
+        //console.log(array1);
+        //console.log(array2);
 
         //TODO HERE: 
         //COMPARE THE TWO NUMBER ARRAYS
 
-        //IF THE NUMBERS ARE THE SAME LOG/RETURN 0
-        //IF THE NUMBER 1 ARRAY INDEX IS LARGER THAN THE OTHER LOG OR RETURN THE DIFFERENCE
-        //IF THE NUMBER 2 ARRAY INDEX IS LARGER THAN THE OTHER , SAME THING LIKE ABOVE
+        for (var i=0; i<array1.length; i++) {
+            if (array1[i] === array2[i]) {
+                totalDiff = totalDiff + 0;
 
+            }else if (array1[i] !== array2[i]){
+                if (array1[i] > array2[i]){
+                    var indexDiff = array1[i] - array2[i];
+                    totalDiff = totalDiff + indexDiff;
 
-        //COMPARE THE TOTAL DIFFERENCE OF DIFFERENT ARRAY OBJECT (FIND THE SMALLEST DIFFERENCE)
+                }else if (array1[i] < array2[i]) {
+                    var indexDiff = array2[i] - array1[i];
+                    totalDiff = totalDiff + indexDiff;
+                    
+                }
 
-        //RETURN THE BEST MATCH INTO AN OBJECT
+            }
+        }
+        console.log(friendsData[friendsIndex].name + " : " + totalDiff);
+        console.log("\n-------------\n");
+
+        diffArray.push(totalDiff);
+
+        compareResultsArray.push({
+            name: friendsData[friendsIndex].name,
+            photo: friendsData[friendsIndex].photo,
+            totalDiff: totalDiff
+        });
 
     };
 
     var newFriend = req.body;
     friendsData.push(newFriend);
 
-    var startingIndex = friendsData.length - 2;
-    while(startingIndex>=0) {
-        //console.log(friendsData[startingIndex].scores);
-        compareScores(newFriend.scores,friendsData[startingIndex].scores);
-        startingIndex--;
+    var diffArray=[];
+     var compareResultsArray =[];
+
+    var friendsIndex = friendsData.length - 2;
+    while(friendsIndex >= 0) {
+        //console.log(friendsData[friendsIndex].scores);
+        compareScores(newFriend.scores,friendsData[friendsIndex].scores);
+        friendsIndex--;
     }
-    
+
+    var min = Math.min.apply(Math, diffArray);
+        console.log(min);
+
+    //successfully display best match here!!!
+    for(var i=0; i<compareResultsArray.length; i++) {
+        if (compareResultsArray[i].totalDiff=== min) {
+            console.log(compareResultsArray[i].name);
+            console.log(compareResultsArray[i].photo);
+        }
+    }
     
     res.json({
         ok: true,
