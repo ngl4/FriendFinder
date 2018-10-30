@@ -266,22 +266,22 @@
 
             var numArray = [parseInt(num1), parseInt(num2), parseInt(num3), parseInt(num4), parseInt(num5),
                 parseInt(num6), parseInt(num7), parseInt(num8), parseInt(num9), parseInt(num10)];
-
+            //TODO:
             //Possible shorter way to code for selectedNumber
             //use "class/ attr/ loop" through all the answers
 
             var newFriend = {
                 name: $("#name").val().trim(),
                 photo: $("#photo").val().trim(),
-                score: numArray
+                scores: numArray
             }
-
-            //console.log(newFriend);
 
             //Adding new Friend to FriendsData 
             $.post("/api/friends", newFriend, function (data) {
 
                 console.log(data);
+                console.log(data.new_friend);
+                console.log(data.friends);
 
                 if (data.ok) {
                     //TODO: create a modal for this added instead of an alert
@@ -290,8 +290,6 @@
                     alert("Sorry! There is something wrong...");
                 }
 
-                console.log(data.friends);
-                
                 $("#name").val("");
                 $("#photo").val("");
                 $("#selectedNumber1").val("");
@@ -305,6 +303,10 @@
                 $("#selectedNumber9").val("");
                 $("#selectedNumber10").val("");
             });
+
+        });
+
+        //You can try to use the GET method later ---to see if this works to get data
 
             // function runFriendsQuery() {
 
@@ -321,7 +323,6 @@
 
             // runFriendsQuery();
 
-        });
     </script>
 
 

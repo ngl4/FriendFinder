@@ -38,11 +38,24 @@ app.post("/api/friends", function (req, res) {
     //function to compare two arrays
     function compareScores(array1, array2) {
 
+        //Total difference variable
+        var totalDiff = 0; 
+
         console.log(array1);
         console.log(array2);
         console.log("\n-------------\n");
 
+        //TODO HERE: 
+        //COMPARE THE TWO NUMBER ARRAYS
 
+        //IF THE NUMBERS ARE THE SAME LOG/RETURN 0
+        //IF THE NUMBER 1 ARRAY INDEX IS LARGER THAN THE OTHER LOG OR RETURN THE DIFFERENCE
+        //IF THE NUMBER 2 ARRAY INDEX IS LARGER THAN THE OTHER , SAME THING LIKE ABOVE
+
+
+        //COMPARE THE TOTAL DIFFERENCE OF DIFFERENT ARRAY OBJECT (FIND THE SMALLEST DIFFERENCE)
+
+        //RETURN THE BEST MATCH INTO AN OBJECT
 
     };
 
