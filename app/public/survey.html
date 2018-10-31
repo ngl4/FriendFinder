@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>FriendFinder-Survey</title>
-    <!-- Bootstrap CDN -->
+    <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <!-- Bootstrap JS CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
     <!-- JQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -208,7 +215,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <button id="submit" type="submit" class="btn btn-info w-100" data-toggle="modal" data-target="#exampleModal">Submit</button>
+            <button id="submit" type="submit" class="btn btn-info w-100" data-toggle="modal" data-target="#submitModal">Submit</button>
         </div>
     </div>
 
@@ -226,17 +233,17 @@
     </footer>
 
     <!-- Modal -->
-    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="submitModalLabel">Your Best Match</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              ...
+              
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -244,7 +251,7 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
 
 
     <!-- JavaScript: Sending Data to Server -->
@@ -265,7 +272,8 @@
             var num10 = $("#selectedNumber10").val().trim();
 
             var numArray = [parseInt(num1), parseInt(num2), parseInt(num3), parseInt(num4), parseInt(num5),
-                parseInt(num6), parseInt(num7), parseInt(num8), parseInt(num9), parseInt(num10)];
+                parseInt(num6), parseInt(num7), parseInt(num8), parseInt(num9), parseInt(num10)
+            ];
             //TODO:
             //Possible shorter way to code for selectedNumber
             //use "class/ attr/ loop" through all the answers
@@ -282,12 +290,24 @@
                 console.log(data);
                 console.log(data.new_friend);
                 console.log(data.friends);
+                console.log(data.best_match);
+
 
                 if (data.ok) {
-                    //TODO: create a modal for this added instead of an alert
-                    alert("You are added!");
+                    
+                    var modal_body_div = $("<div>");
+                    var modal_body_name = $("<h2>");
+                    modal_body_name.text(data.best_match[0]);
+                    var modal_body_photo = $("<img>");
+                    modal_body_photo.attr("src", data.best_match[1]);
+                    modal_body_div.append(modal_body_name);
+                    modal_body_div.append(modal_body_photo);
+                    $(".modal-body").append(modal_body_div);
+
+                    //alert("You are added!");
                 } else {
-                    alert("Sorry! There is something wrong...");
+                    //alert("Sorry! There is something wrong...");
+                    $(".modal-body").text("Sorry! There is something wrong...");
                 }
 
                 $("#name").val("");
@@ -308,21 +328,20 @@
 
         //You can try to use the GET method later ---to see if this works to get data
 
-            // function runFriendsQuery() {
+        // function runFriendsQuery() {
 
-            //     $.ajax({
-            //             url: "/api/friends",
-            //             method: "GET"
-            //         })
-            //         .then(function (friendsData) {
-            //             console.log(friendsData + "\n--------------\n");
+        //     $.ajax({
+        //             url: "/api/friends",
+        //             method: "GET"
+        //         })
+        //         .then(function (friendsData) {
+        //             console.log(friendsData + "\n--------------\n");
 
-            //         });
+        //         });
 
-            // }
+        // }
 
-            // runFriendsQuery();
-
+        // runFriendsQuery();
     </script>
 
 
