@@ -12,7 +12,8 @@ var friendsArray = [{
             5,
             4,
             1
-        ]
+        ],
+        "intro": "I am 23. I like to travel around the world. I have visited 20 different countries across the globe and will be planning to keep travelling. I really hope to find a friend with the same interest as I am and so we could go to travel together!"
     },
     {
         "name": "Mandy",
@@ -28,7 +29,9 @@ var friendsArray = [{
             5,
             5,
             2
-        ]
+        ],
+        "intro": "I am 25. I am a computer programmer. I love to code and also do different outdoor activities, especially rock-climbing. I am looking for a friend who shares similar interests and with an energetic personality."
+
 
     },
     {
@@ -45,7 +48,9 @@ var friendsArray = [{
             2,
             2,
             3
-        ]
+        ],
+        "intro": "I am 18. I am going to go to college in a few months. I am looking for a friend who loves reading anime and also loves playing multiplayer games, such as Arena of Valor. I love studying and reading books. I also really like to discuss some philosophical theories. I look forward to getting to know my best-match friend!"
+
     },
     {
         "name": "Lim",
@@ -61,7 +66,9 @@ var friendsArray = [{
             5,
             3,
             3
-        ]
+        ],
+        "intro": "I am 21. I am an introverted person. I enjoy being in a quiet room to read a book, or to write a story, or to go for a walk in the park. I like writing stories and creating different animation to make othes laugh. I like walking in the park because I can observe a lot of personalities that I can use in different characters in my own stories. I am looking for a best-match friend to spend time with to discuss stories, and of course in general, just to talk about life and to get to know each other more! "
+
     }
 
 ];

@@ -214,6 +214,11 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <h3>Give a short Introduction about Yourself</h3>
+            <textarea class="form-control" id="intro" rows="8"></textarea>
+          </div>
+
         <div class="d-flex justify-content-center">
             <button id="submit" type="submit" class="btn btn-info w-100" data-toggle="modal" data-target="#submitModal">Submit</button>
         </div>
@@ -226,7 +231,9 @@
         <div class="container">
             <p class="d-flex justify-content-end text-secondary">
                 <a href="/api/friends" class="text-secondary pr-3">API Friends List </a> | <a href="https://github.com/ngl4/FriendFinder"
-                    class="text-secondary pl-3">GitHub Repo</a>
+                    class="text-secondary pl-3 pr-3">GitHub Repo</a> | <a href="/api/clear" class="text-secondary pl-3"
+                    id="clear">Clear
+                    All </a>
             </p>
         </div>
 
@@ -235,23 +242,23 @@
     <!-- Modal -->
     <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="submitModalLabel">Your Best Match</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="submitModalLabel">Your Best Match</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
             </div>
-            <div class="modal-body">
-              
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
 
 
     <!-- JavaScript: Sending Data to Server -->
@@ -281,32 +288,28 @@
             var newFriend = {
                 name: $("#name").val().trim(),
                 photo: $("#photo").val().trim(),
-                scores: numArray
+                scores: numArray,
+                intro: $("#intro").val().trim()
             }
 
             //Adding new Friend to FriendsData 
             $.post("/api/friends", newFriend, function (data) {
 
-                console.log(data);
-                console.log(data.new_friend);
-                console.log(data.friends);
-                console.log(data.best_match);
-
-
                 if (data.ok) {
-                    
+
                     var modal_body_div = $("<div>");
                     var modal_body_name = $("<h2>");
                     modal_body_name.text(data.best_match[0]);
                     var modal_body_photo = $("<img>");
                     modal_body_photo.attr("src", data.best_match[1]);
+                    var modal_body_intro = $("<p>");
+                    modal_body_intro.text(data.best_match[2]);
                     modal_body_div.append(modal_body_name);
                     modal_body_div.append(modal_body_photo);
+                    modal_body_div.append(modal_body_intro);
                     $(".modal-body").append(modal_body_div);
 
-                    //alert("You are added!");
                 } else {
-                    //alert("Sorry! There is something wrong...");
                     $(".modal-body").text("Sorry! There is something wrong...");
                 }
 
@@ -322,26 +325,37 @@
                 $("#selectedNumber8").val("");
                 $("#selectedNumber9").val("");
                 $("#selectedNumber10").val("");
+                $("#intro").val("");
             });
 
         });
 
-        //You can try to use the GET method later ---to see if this works to get data
 
-        // function runFriendsQuery() {
+  $("#clear").on("click", function(event){
+    event.preventDefault();
+    alert("Clearing...");
+    $.ajax({ url: "/api/clear", method: "POST" }).then(function() {
+      console.log("clear table");
+    });
+  });
+       
 
-        //     $.ajax({
-        //             url: "/api/friends",
-        //             method: "GET"
-        //         })
-        //         .then(function (friendsData) {
-        //             console.log(friendsData + "\n--------------\n");
+                //You can try to use the GET method later ---to see if this works to get data
 
-        //         });
+                // function runFriendsQuery() {
 
-        // }
+                //     $.ajax({
+                //             url: "/api/friends",
+                //             method: "GET"
+                //         })
+                //         .then(function (friendsData) {
+                //             console.log(friendsData + "\n--------------\n");
 
-        // runFriendsQuery();
+                //         });
+
+                // }
+
+                // runFriendsQuery();
     </script>
 
 

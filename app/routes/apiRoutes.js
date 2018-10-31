@@ -14,13 +14,13 @@ app.get("/api/friends", function (req, res) {
 //API Post request to submit into Data 
 app.post("/api/friends", function (req, res) {
 
-    //function to compare two arrays
+    //function to compare two scores arrays
     function compareScores(array1, array2) {
 
+        //total difference is adding the difference of two scores indexes one by one 
         var totalDiff = 0; 
 
-        //Compare two scores array 
-
+        //Compare two scores' indexes array 
         for (var i=0; i<array1.length; i++) {
             if (array1[i] === array2[i]) {
                 totalDiff += 0;
@@ -36,29 +36,33 @@ app.post("/api/friends", function (req, res) {
                 }
             }
         }
-
+        //push to diffArray to get minimum difference later
         diffArray.push(totalDiff);
-
+        //push to compareResultsArray for later comparison and accessibility 
         compareResultsArray.push({
             name: friendsData[friendsIndex].name,
             photo: friendsData[friendsIndex].photo,
+            intro: friendsData[friendsIndex].intro,
             totalDiff: totalDiff
         });
 
     };
 
+    //push new friend into the database (friends.js)
     var newFriend = req.body;
     friendsData.push(newFriend);
 
     var diffArray=[];
-     var compareResultsArray =[];
+    var compareResultsArray =[];
 
+    //logic to compare two scores array of new friend and other friends in the database
     var friendsIndex = friendsData.length - 2;
     while(friendsIndex >= 0) {
         compareScores(newFriend.scores,friendsData[friendsIndex].scores);
         friendsIndex--;
     }
 
+    //find the minimun difference in diffArray 
     var min = Math.min.apply(Math, diffArray);
     
     var best_match = [];
@@ -68,9 +72,11 @@ app.post("/api/friends", function (req, res) {
         if (compareResultsArray[i].totalDiff=== min) {
             best_match.push(compareResultsArray[i].name);
             best_match.push(compareResultsArray[i].photo);
+            best_match.push(compareResultsArray[i].intro);
         }
     }
     
+    //display these response to the front-end at 'data' from "$.post ...function(data)""
     res.json({
         ok: true,
         new_friend: newFriend,
@@ -83,7 +89,6 @@ app.post("/api/friends", function (req, res) {
 app.post("/api/clear", function (req, res) {
     // Empty out the arrays of data
     friendsData.length = [];
-
     res.json({
         ok: true
     });
