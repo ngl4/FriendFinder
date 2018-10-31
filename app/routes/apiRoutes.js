@@ -2,8 +2,8 @@
 //Load Data (require Data) from friends.js file
 var friendsData = require("../data/friends");
 
-
 module.exports = function(app) {
+
 //API GET request to parse those Data into JSON
 //Getting information
 app.get("/api/friends", function (req, res) {
@@ -17,28 +17,25 @@ app.post("/api/friends", function (req, res) {
     //function to compare two arrays
     function compareScores(array1, array2) {
 
-        //Total difference variable
         var totalDiff = 0; 
 
-        //COMPARE THE TWO NUMBER ARRAYS
+        //Compare two scores array 
 
         for (var i=0; i<array1.length; i++) {
             if (array1[i] === array2[i]) {
-                totalDiff = totalDiff + 0;
+                totalDiff += 0;
 
             }else if (array1[i] !== array2[i]){
                 if (array1[i] > array2[i]){
                     var indexDiff = array1[i] - array2[i];
-                    totalDiff = totalDiff + indexDiff;
+                    totalDiff += indexDiff;
 
                 }else if (array1[i] < array2[i]) {
                     var indexDiff = array2[i] - array1[i];
-                    totalDiff = totalDiff + indexDiff;
+                    totalDiff += indexDiff;
                 }
             }
         }
-        console.log(friendsData[friendsIndex].name + " : " + totalDiff);
-        console.log("\n-------------\n");
 
         diffArray.push(totalDiff);
 
@@ -63,15 +60,12 @@ app.post("/api/friends", function (req, res) {
     }
 
     var min = Math.min.apply(Math, diffArray);
-        console.log(min);
     
     var best_match = [];
 
     //successfully display best match here!!!
     for(var i=0; i<compareResultsArray.length; i++) {
         if (compareResultsArray[i].totalDiff=== min) {
-            console.log(compareResultsArray[i].name);
-            console.log(compareResultsArray[i].photo);
             best_match.push(compareResultsArray[i].name);
             best_match.push(compareResultsArray[i].photo);
         }

@@ -11,7 +11,7 @@ app.use(express.json());
 require("./app/routes/apiRoutes")(app);
 require("./app/routes/htmlRoutes")(app);
 
-//any routes
+//any routes entered will display home page
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
 });
